@@ -58,9 +58,9 @@ Use smaller Whisper models for lightweight servers:
 
 model = whisper.load_model("tiny")
 
-Run with GPU acceleration (if available):
+### Run with GPU acceleration (if available):
 
-pip install torch --index-url https://download.pytorch.org/whl/cu118
+```pip install torch --index-url https://download.pytorch.org/whl/cu118```
 
 ### 🧹 File Cleanup
 
