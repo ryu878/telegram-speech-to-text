@@ -16,19 +16,19 @@ Fully self-hosted on Ubuntu
 
 Clone the repository:
 
-git clone https://github.com/yourusername/NoVoicePlzBot.git
-cd NoVoicePlzBot
+```git clone https://github.com/yourusername/NoVoicePlzBot.git
+cd NoVoicePlzBot```
 
 ### Set up your environment:
 
-sudo apt update
+```sudo apt update
 sudo apt install ffmpeg python3 python3-pip
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate```
 
 ### Install Python dependencies:
 
-pip install python-telegram-bot openai-whisper ffmpeg-python
+```pip install python-telegram-bot openai-whisper ffmpeg-python```
 
 ### Create a Telegram bot:
 
@@ -48,7 +48,7 @@ TOKEN = "your-telegram-bot-token"
 
 Start the bot with:
 
-python bot.py
+```python bot.py```
 
 The bot will start polling for updates. Send a voice message to see it in action!
 
