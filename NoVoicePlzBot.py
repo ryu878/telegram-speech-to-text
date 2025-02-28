@@ -3,6 +3,7 @@ import ffmpeg
 import whisper
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
+from _config import TOKEN
 
 
 

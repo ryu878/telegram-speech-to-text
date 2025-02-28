@@ -1,7 +1,83 @@
-# telegram-speech-to-text
-Telegram speech-to-text bot
+# NoVoicePlzBot — Telegram Voice Message Transcriber
 
+A playful Telegram bot that converts voice messages into text using OpenAI's Whisper model. Perfect for people who prefer reading over listening! 🛑🎙️
 
-conda create --name NoVoicePlzBot -c conda-forge python=3.11
+## 🚀 Features
 
-conda activate NoVoicePlzBot
+Transcribes Telegram voice messages to text
+
+Handles audio conversion with FFmpeg
+
+Supports Whisper's small model (or other sizes)
+
+Fully self-hosted on Ubuntu
+
+## 🛠️ Installation
+
+Clone the repository:
+
+git clone https://github.com/yourusername/NoVoicePlzBot.git
+cd NoVoicePlzBot
+
+### Set up your environment:
+
+sudo apt update
+sudo apt install ffmpeg python3 python3-pip
+python3 -m venv venv
+source venv/bin/activate
+
+### Install Python dependencies:
+
+pip install python-telegram-bot openai-whisper ffmpeg-python
+
+### Create a Telegram bot:
+
+Message BotFather
+
+Use /newbot and follow the steps
+
+Save your bot token
+
+### Configure the bot:
+
+Create a _config.py file in the project directory:
+
+TOKEN = "your-telegram-bot-token"
+
+### 🏁 Run the Bot
+
+Start the bot with:
+
+python bot.py
+
+The bot will start polling for updates. Send a voice message to see it in action!
+
+### ⚡ Optimizations
+
+Use smaller Whisper models for lightweight servers:
+
+model = whisper.load_model("tiny")
+
+Run with GPU acceleration (if available):
+
+pip install torch --index-url https://download.pytorch.org/whl/cu118
+
+### 🧹 File Cleanup
+
+Temporary audio files are automatically deleted after transcription.
+
+### 📜 License
+
+MIT License — Free to use, share, and modify!
+
+### 🤝 Contributions
+
+PRs and suggestions are welcome! Let’s make voice messages less annoying, one transcription at a time. 😉
+
+### 🎯 Future Improvements
+
+Handle longer audio files in chunks
+
+Add support for multiple languages
+
+Reply with a funny message when people send voice notes
