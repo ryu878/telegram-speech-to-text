@@ -4,13 +4,13 @@ A playful Telegram bot that converts voice messages into text using OpenAI's Whi
 
 ## 🚀 Features
 
-    Transcribes Telegram voice messages to text
+- Transcribes Telegram voice messages to text
 
-    Handles audio conversion with FFmpeg
+- Handles audio conversion with FFmpeg
 
-    Supports Whisper's small model (or other sizes)
+- Supports Whisper's small model (or other sizes)
 
-    Fully self-hosted
+- Fully self-hosted
 
 ## 🛠️ Installation
 
@@ -38,15 +38,15 @@ pip install python-telegram-bot openai-whisper ffmpeg-python
 
 ### Create a Telegram bot:
 
-Message BotFather
+- Message BotFather
 
-Use /newbot and follow the steps
+- Use /newbot and follow the steps
 
-Save your bot token
+- Save your bot token
 
 ### Configure the bot:
 
-Create a _config.py file in the project directory:
+- Create a _config.py file in the project directory:
 
 TOKEN = "your-telegram-bot-token"
 
@@ -62,7 +62,7 @@ The bot will start polling for updates. Send a voice message to see it in action
 
 ### ⚡ Optimizations
 
-Use smaller Whisper models for lightweight servers:
+- Use smaller Whisper models for lightweight servers:
 
 model = whisper.load_model("tiny")
 
@@ -86,15 +86,15 @@ PRs and suggestions are welcome! Let’s make voice messages less annoying, one 
 
 ### 🎯 Future Improvements
 
-    Handle longer audio files in chunks
+- Handle longer audio files in chunks
 
-    Add support for multiple languages
+- Add support for multiple languages
 
-    Reply with a funny message when people send voice notes
+- Reply with a funny message when people send voice notes
 
 ## Contacts
 
-t.me/vi8ilante
+https://t.me/vi8ilante
 
 ## VPS for bots and scripts
 I prefer using DigitalOcean.
