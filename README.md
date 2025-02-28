@@ -10,25 +10,31 @@ Handles audio conversion with FFmpeg
 
 Supports Whisper's small model (or other sizes)
 
-Fully self-hosted on Ubuntu
+Fully self-hosted
 
 ## 🛠️ Installation
 
 Clone the repository:
 
-```git clone https://github.com/yourusername/NoVoicePlzBot.git
-cd NoVoicePlzBot```
+```
+git clone https://github.com/yourusername/NoVoicePlzBot.git
+cd NoVoicePlzBot
+```
 
 ### Set up your environment:
 
-```sudo apt update
+```
+sudo apt update
 sudo apt install ffmpeg python3 python3-pip
 python3 -m venv venv
-source venv/bin/activate```
+source venv/bin/activate
+```
 
 ### Install Python dependencies:
 
-```pip install python-telegram-bot openai-whisper ffmpeg-python```
+```
+pip install python-telegram-bot openai-whisper ffmpeg-python
+```
 
 ### Create a Telegram bot:
 
@@ -48,7 +54,9 @@ TOKEN = "your-telegram-bot-token"
 
 Start the bot with:
 
-```python bot.py```
+```
+python bot.py
+```
 
 The bot will start polling for updates. Send a voice message to see it in action!
 
@@ -60,7 +68,9 @@ model = whisper.load_model("tiny")
 
 ### Run with GPU acceleration (if available):
 
-```pip install torch --index-url https://download.pytorch.org/whl/cu118```
+```
+pip install torch --index-url https://download.pytorch.org/whl/cu118
+```
 
 ### 🧹 File Cleanup
 
