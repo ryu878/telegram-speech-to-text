@@ -4,13 +4,13 @@ A playful Telegram bot that converts voice messages into text using OpenAI's Whi
 
 ## 🚀 Features
 
-Transcribes Telegram voice messages to text
+    Transcribes Telegram voice messages to text
 
-Handles audio conversion with FFmpeg
+    Handles audio conversion with FFmpeg
 
-Supports Whisper's small model (or other sizes)
+    Supports Whisper's small model (or other sizes)
 
-Fully self-hosted
+    Fully self-hosted
 
 ## 🛠️ Installation
 
@@ -86,11 +86,11 @@ PRs and suggestions are welcome! Let’s make voice messages less annoying, one 
 
 ### 🎯 Future Improvements
 
-Handle longer audio files in chunks
+    Handle longer audio files in chunks
 
-Add support for multiple languages
+    Add support for multiple languages
 
-Reply with a funny message when people send voice notes
+    Reply with a funny message when people send voice notes
 
 ## Contacts
 
