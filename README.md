@@ -91,3 +91,14 @@ Handle longer audio files in chunks
 Add support for multiple languages
 
 Reply with a funny message when people send voice notes
+
+## Contacts
+
+t.me/vi8ilante
+
+## VPS for bots and scripts
+I prefer using DigitalOcean.
+  
+[![DigitalOcean Referral Badge](https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg)](https://www.digitalocean.com/?refcode=3d7f6e57bc04&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
+  
+To get $200 in credit over 60 days use my ref link: https://m.do.co/c/3d7f6e57bc04
