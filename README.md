@@ -30,6 +30,13 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
+or use conda:
+
+```
+conda create --name NoVoicePlzBot -c conda-forge python=3.11
+conda activate NoVoicePlzBot
+```
+
 ### Install Python dependencies:
 
 ```
