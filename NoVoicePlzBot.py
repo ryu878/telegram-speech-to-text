@@ -17,7 +17,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Handle voice messages
 async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Отправляем начальное сообщение
-    status_message = await update.message.reply_text("Распознавание голоса: [░░░░░░░░░░] 0%")
+    status_message = await update.message.reply_text("Ждите. Идет распознавание голоса: [░░░░░░░░░░] 0%")
     
     file = await update.message.voice.get_file()
     file_path = "voice.ogg"
@@ -30,7 +30,7 @@ async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     os.system(f"ffmpeg -i {file_path} -ar 16000 -ac 1 -c:a pcm_s16le {wav_path}")
 
     # Обновляем статус
-    await status_message.edit_text("Распознавание голоса: [████░░░░░░] 50%")
+    await status_message.edit_text("Ждите. Идет распознавание голоса: [████░░░░░░] 50%")
 
     # Transcribe the audio
     result = model.transcribe(wav_path)
