@@ -1,7 +1,7 @@
 import os
 import ffmpeg
 import whisper
-from telegram import Update
+from telegram import Update, ChatAction
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 from _config import TOKEN
 
@@ -18,6 +18,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     file = await update.message.voice.get_file()
     file_path = "voice.ogg"
+
+    # Indicate that transcription is in progress
+    await context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
     
     # Download the voice message
     await file.download_to_drive(file_path)
