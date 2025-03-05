@@ -6,7 +6,11 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 from _config import TOKEN
 
 
-Name = ''
+
+name = 'NoVoicePlzBot'
+ver = '050325'
+print(f' {name} ver {ver}')
+
 # Load Whisper model (you can choose smaller models for less CPU usage)
 model = whisper.load_model("small")
 
