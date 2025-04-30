@@ -1,5 +1,7 @@
 import os
 import whisper
+import hashlib
+import time
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 from _config import TOKEN
@@ -7,7 +9,7 @@ from _config import TOKEN
 
 
 NAME = 'NoVoicePlzBot'
-VER = '050325'
+VER = '300425'
 print(f' {NAME} ver {VER}')
 
 # Load Whisper model
@@ -18,15 +20,21 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Send me a voice message, and I'll transcribe it!\nPlease contact @vi8ilante for cooperation.")
 
 
+def generate_file_hash():
+    """Generate a short unique hash for filenames"""
+    return hashlib.md5(str(time.time()).encode()).hexdigest()[:8]
+
+
 async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.from_user.id
+    file_hash = generate_file_hash()
     status_message = await update.message.reply_text("Please wait. Voice recognition in progress: [░░░░░░░░░░] 0%")
     
     try:
         # Get voice message file
         file = await update.message.voice.get_file()
-        ogg_path = f"{user_id}_voice.ogg"
-        wav_path = f"{user_id}_voice.wav"
+        ogg_path = f"{user_id}_voice_{file_hash}.ogg"
+        wav_path = f"{user_id}_voice_{file_hash}.wav"
         
         # Download the voice message
         await file.download_to_drive(ogg_path)
@@ -64,7 +72,7 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.VOICE, handle_voice))
 
-    print(f'Bot {NAME} ver {VER} is running...')
+    print(f' BOT {NAME} ver {VER} id rinning...')
     app.run_polling()
 
 
