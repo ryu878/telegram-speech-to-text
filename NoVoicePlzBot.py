@@ -1,5 +1,4 @@
 import os
-import ffmpeg
 import whisper
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
@@ -7,57 +6,67 @@ from _config import TOKEN
 
 
 
-name = 'NoVoicePlzBot'
-ver = '050325'
-print(f' {name} ver {ver}')
+NAME = 'NoVoicePlzBot'
+VER = '050325'
+print(f' {NAME} ver {VER}')
 
-# Load Whisper model (you can choose smaller models for less CPU usage)
+# Load Whisper model
 model = whisper.load_model("small")
 
-# Command to start the bot
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Send me a voice message, and I'll transcribe it!\nPlease contact @vi8ilante for cooperation.")
 
-# Handle voice messages
+
 async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # Отправляем начальное сообщение
+    user_id = update.message.from_user.id
     status_message = await update.message.reply_text("Please wait. Voice recognition in progress: [░░░░░░░░░░] 0%")
     
-    file = await update.message.voice.get_file()
-    file_path = "voice.ogg"
-    
-    # Download the voice message
-    await file.download_to_drive(file_path)
+    try:
+        # Get voice message file
+        file = await update.message.voice.get_file()
+        ogg_path = f"{user_id}_voice.ogg"
+        wav_path = f"{user_id}_voice.wav"
+        
+        # Download the voice message
+        await file.download_to_drive(ogg_path)
 
-    # Convert to WAV format for Whisper
-    wav_path = "voice.wav"
-    os.system(f"ffmpeg -i {file_path} -ar 16000 -ac 1 -c:a pcm_s16le {wav_path}")
+        # Update status
+        await status_message.edit_text("Please wait. Voice recognition in progress: [████░░░░░░] 50%")
 
-    # Обновляем статус
-    await status_message.edit_text("Please wait. Voice recognition in progress: [████░░░░░░] 50%")
+        # Convert to WAV format for Whisper
+        os.system(f"ffmpeg -i {ogg_path} -ar 16000 -ac 1 -c:a pcm_s16le {wav_path}")
 
-    # Transcribe the audio
-    result = model.transcribe(wav_path)
-    transcription = result["text"]
+        # Transcribe the audio
+        result = model.transcribe(wav_path)
+        transcription = result["text"]
 
-    # Обновляем статус
-    await status_message.edit_text("Voice recognition progress: [██████████] 100%")
+        # Update status
+        await status_message.edit_text("Voice recognition progress: [██████████] 100%")
 
-    # Send the transcription back
-    await update.message.reply_text(f"Transcription: {transcription}")
+        # Send the transcription back
+        await update.message.reply_text(f"Transcription: {transcription}")
 
-    # Clean up files
-    os.remove(file_path)
-    os.remove(wav_path)
+    except Exception as e:
+        await update.message.reply_text(f"An error occurred: {str(e)}")
+    finally:
+        # Clean up files if they exist
+        for file_path in [ogg_path, wav_path]:
+            if os.path.exists(file_path):
+                try:
+                    os.remove(file_path)
+                except:
+                    pass
 
-# Initialize the bot
+
 def main():
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.VOICE, handle_voice))
 
-    print("Bot is running...")
+    print(f'Bot {NAME} ver {VER} is running...')
     app.run_polling()
+
 
 if __name__ == "__main__":
     main()
