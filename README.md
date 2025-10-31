@@ -83,13 +83,6 @@ pip install torch --index-url https://download.pytorch.org/whl/cu118
 
 Temporary audio files are automatically deleted after transcription.
 
-### 📜 License
-
-MIT License — Free to use, share, and modify!
-
-### 🤝 Contributions
-
-PRs and suggestions are welcome! Let’s make voice messages less annoying, one transcription at a time. 😉
 
 ### 🎯 Future Improvements
 
